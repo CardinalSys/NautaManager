@@ -32,8 +32,6 @@ namespace NautaManager
             this.components = new System.ComponentModel.Container();
             this.ExitButton = new System.Windows.Forms.Button();
             this.MinButton = new System.Windows.Forms.Button();
-            this.UserImage = new System.Windows.Forms.PictureBox();
-            this.AccountName = new System.Windows.Forms.Label();
             this.UserTextBox = new System.Windows.Forms.TextBox();
             this.PassTextBox = new System.Windows.Forms.TextBox();
             this.MainTimer = new System.Windows.Forms.Timer(this.components);
@@ -53,7 +51,7 @@ namespace NautaManager
             this.ActiveTimerBtn = new System.Windows.Forms.Button();
             this.ReduceTime = new System.Windows.Forms.Timer(this.components);
             this.ClickOnWindows = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.UserImage)).BeginInit();
+            this.ReconnectCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NautaBanner)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,29 +82,6 @@ namespace NautaManager
             this.MinButton.Text = "_";
             this.MinButton.UseVisualStyleBackColor = true;
             this.MinButton.Click += new System.EventHandler(this.MinButton_Click);
-            // 
-            // UserImage
-            // 
-            this.UserImage.BackColor = System.Drawing.Color.Transparent;
-            this.UserImage.BackgroundImage = global::NautaManager.Properties.Resources.UserImage;
-            this.UserImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.UserImage.Location = new System.Drawing.Point(35, 31);
-            this.UserImage.Name = "UserImage";
-            this.UserImage.Size = new System.Drawing.Size(150, 153);
-            this.UserImage.TabIndex = 2;
-            this.UserImage.TabStop = false;
-            // 
-            // AccountName
-            // 
-            this.AccountName.BackColor = System.Drawing.Color.Transparent;
-            this.AccountName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AccountName.Location = new System.Drawing.Point(48, 216);
-            this.AccountName.Name = "AccountName";
-            this.AccountName.Size = new System.Drawing.Size(130, 25);
-            this.AccountName.TabIndex = 3;
-            this.AccountName.Text = "No Logueado";
-            this.AccountName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UserTextBox
             // 
@@ -221,7 +196,7 @@ namespace NautaManager
             this.TimerDisconnect.BackColor = System.Drawing.Color.Transparent;
             this.TimerDisconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimerDisconnect.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.TimerDisconnect.Location = new System.Drawing.Point(45, 293);
+            this.TimerDisconnect.Location = new System.Drawing.Point(40, 47);
             this.TimerDisconnect.Name = "TimerDisconnect";
             this.TimerDisconnect.Size = new System.Drawing.Size(133, 25);
             this.TimerDisconnect.TabIndex = 15;
@@ -233,7 +208,7 @@ namespace NautaManager
             this.RemTime.BackColor = System.Drawing.Color.Transparent;
             this.RemTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RemTime.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.RemTime.Location = new System.Drawing.Point(12, 419);
+            this.RemTime.Location = new System.Drawing.Point(14, 167);
             this.RemTime.Name = "RemTime";
             this.RemTime.Size = new System.Drawing.Size(16, 17);
             this.RemTime.TabIndex = 16;
@@ -242,14 +217,14 @@ namespace NautaManager
             // 
             // HourLimit
             // 
-            this.HourLimit.Location = new System.Drawing.Point(71, 338);
+            this.HourLimit.Location = new System.Drawing.Point(68, 85);
             this.HourLimit.Name = "HourLimit";
             this.HourLimit.Size = new System.Drawing.Size(32, 20);
             this.HourLimit.TabIndex = 17;
             // 
             // MinLimit
             // 
-            this.MinLimit.Location = new System.Drawing.Point(133, 338);
+            this.MinLimit.Location = new System.Drawing.Point(130, 85);
             this.MinLimit.Name = "MinLimit";
             this.MinLimit.Size = new System.Drawing.Size(32, 20);
             this.MinLimit.TabIndex = 18;
@@ -259,7 +234,7 @@ namespace NautaManager
             this.HLimitText.BackColor = System.Drawing.Color.Transparent;
             this.HLimitText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HLimitText.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.HLimitText.Location = new System.Drawing.Point(49, 337);
+            this.HLimitText.Location = new System.Drawing.Point(46, 84);
             this.HLimitText.Name = "HLimitText";
             this.HLimitText.Size = new System.Drawing.Size(19, 25);
             this.HLimitText.TabIndex = 19;
@@ -270,7 +245,7 @@ namespace NautaManager
             this.MLimitText.BackColor = System.Drawing.Color.Transparent;
             this.MLimitText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MLimitText.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MLimitText.Location = new System.Drawing.Point(109, 338);
+            this.MLimitText.Location = new System.Drawing.Point(106, 85);
             this.MLimitText.Name = "MLimitText";
             this.MLimitText.Size = new System.Drawing.Size(19, 25);
             this.MLimitText.TabIndex = 20;
@@ -279,7 +254,7 @@ namespace NautaManager
             // ActiveTimerBtn
             // 
             this.ActiveTimerBtn.Enabled = false;
-            this.ActiveTimerBtn.Location = new System.Drawing.Point(71, 378);
+            this.ActiveTimerBtn.Location = new System.Drawing.Point(68, 122);
             this.ActiveTimerBtn.Name = "ActiveTimerBtn";
             this.ActiveTimerBtn.Size = new System.Drawing.Size(75, 23);
             this.ActiveTimerBtn.TabIndex = 21;
@@ -296,6 +271,18 @@ namespace NautaManager
             // 
             this.ClickOnWindows.Tick += new System.EventHandler(this.ClickOnWindows_Tick);
             // 
+            // ReconnectCheckBox
+            // 
+            this.ReconnectCheckBox.AutoSize = true;
+            this.ReconnectCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.ReconnectCheckBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ReconnectCheckBox.Location = new System.Drawing.Point(516, 422);
+            this.ReconnectCheckBox.Name = "ReconnectCheckBox";
+            this.ReconnectCheckBox.Size = new System.Drawing.Size(153, 17);
+            this.ReconnectCheckBox.TabIndex = 26;
+            this.ReconnectCheckBox.Text = "Reconectar cada 12 horas";
+            this.ReconnectCheckBox.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,6 +291,7 @@ namespace NautaManager
             this.BackgroundImage = global::NautaManager.Properties.Resources.BGNauta;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1012, 465);
+            this.Controls.Add(this.ReconnectCheckBox);
             this.Controls.Add(this.ActiveTimerBtn);
             this.Controls.Add(this.MLimitText);
             this.Controls.Add(this.HLimitText);
@@ -320,8 +308,6 @@ namespace NautaManager
             this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.PassTextBox);
             this.Controls.Add(this.UserTextBox);
-            this.Controls.Add(this.AccountName);
-            this.Controls.Add(this.UserImage);
             this.Controls.Add(this.MinButton);
             this.Controls.Add(this.ExitButton);
             this.DoubleBuffered = true;
@@ -329,7 +315,6 @@ namespace NautaManager
             this.Name = "MainForm";
             this.Text = "Nauta Manager";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
-            ((System.ComponentModel.ISupportInitialize)(this.UserImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NautaBanner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -340,8 +325,6 @@ namespace NautaManager
 
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button MinButton;
-        private System.Windows.Forms.PictureBox UserImage;
-        private System.Windows.Forms.Label AccountName;
         private System.Windows.Forms.TextBox UserTextBox;
         private System.Windows.Forms.TextBox PassTextBox;
         private System.Windows.Forms.Timer MainTimer;
@@ -361,6 +344,7 @@ namespace NautaManager
         private System.Windows.Forms.Button ActiveTimerBtn;
         private System.Windows.Forms.Timer ReduceTime;
         private System.Windows.Forms.Timer ClickOnWindows;
+        private System.Windows.Forms.CheckBox ReconnectCheckBox;
     }
 }
 

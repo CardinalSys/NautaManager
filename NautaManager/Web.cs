@@ -9,6 +9,10 @@ namespace NautaManager
 {
     public partial class MainForm //Web
     {
+        //WebBrowers
+        WebBrowser webBrowser;
+        HtmlElement aviableTimeElement;
+        HtmlElement onlineTimeElement;
         private void Main()
         {
 
@@ -28,6 +32,11 @@ namespace NautaManager
                 {
                     onlineTime = onlineTimeElement.InnerHtml;
                     ConnectedTimeText.Text = "Tiempo consumido: " + onlineTime;
+                    if (onlineTime.Split(':')[0] == "12")
+                    {
+                        Logout();
+                        Login();
+                    }
                 }
                 else
                 {
@@ -57,6 +66,8 @@ namespace NautaManager
                 }
 
                 RemTime.Text = "Tiempo Restante: " + timerMins.ToString() + " minutos";
+
+
             }
             else
             {
@@ -84,9 +95,9 @@ namespace NautaManager
                     {
                         //Set the values in the web browser
                         HtmlElement user = webBrowser.Document.GetElementById("username");
-                        user.SetAttribute("value", username);
+                        user.SetAttribute("value", UserTextBox.Text);
                         HtmlElement pass = webBrowser.Document.GetElementById("password");
-                        pass.SetAttribute("value", password);
+                        pass.SetAttribute("value", PassTextBox.Text);
 
                         Ui(false); //Disable the first UI
 
@@ -137,5 +148,7 @@ namespace NautaManager
             else
                 Application.Exit();
         }
+
+       
     }
 }

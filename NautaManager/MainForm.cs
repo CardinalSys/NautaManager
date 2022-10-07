@@ -47,17 +47,8 @@ namespace NautaManager
         private int timerMins;
         private bool timerAct = false;
 
-        //Password Encrypt
-        public const String strPermutation = "ouiveyxaqtd";
-        public const Int32 bytePermutation1 = 0x19;
-        public const Int32 bytePermutation2 = 0x59;
-        public const Int32 bytePermutation3 = 0x17;
-        public const Int32 bytePermutation4 = 0x41;
 
-        //WebBrowers
-        WebBrowser webBrowser;
-        HtmlElement aviableTimeElement;
-        HtmlElement onlineTimeElement;
+
 
         [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
@@ -86,8 +77,8 @@ namespace NautaManager
                 password = (Decrypt(passwordEncrypted));
                 UserTextBox.Text = username;
                 PassTextBox.Text = password;
-                AccountName.Text = username.Split('@')[0];
             }
+
         }
 
 
@@ -165,7 +156,7 @@ namespace NautaManager
         //Buttons
         private void ConnectButton_Click(object sender, EventArgs e)
         {
-            if (UserTextBox.Text.Contains("@nauta.com.cu"))
+            if (UserTextBox.Text.Contains("@nauta.com.cu") || UserTextBox.Text.Contains("@nautaplus"))
             {
                 //If the text inputted is different than the saved ask for save it
                 if (username != UserTextBox.Text || password != PassTextBox.Text)
@@ -174,18 +165,20 @@ namespace NautaManager
 
                     if (dialog == DialogResult.Yes)
                     {
+                        if(File.Exists(Directory.GetCurrentDirectory() + @"\user.dat"))
+                        {
+                            File.Delete(Directory.GetCurrentDirectory() + @"\user.dat");
+                        }
                         StreamWriter write = new StreamWriter(Directory.GetCurrentDirectory() + @"\user.dat");
-                        string strEncrypted = (Encrypt(password));
-                        write.Write("username: " + username + ";" + "password: " + strEncrypted);
+                        string strEncrypted = (Encrypt(PassTextBox.Text));
+                        write.Write("username: " + UserTextBox.Text + ";" + "password: " + strEncrypted);
                         write.Close();
                     }
                 }
                 Login();
             }
             else
-                MessageBox.Show("Formato de Usuario incorrecto, revise si @nauta.com.cu está bien escrito.");
-
-            AccountName.Text = UserTextBox.Text.Split('@')[0]; //Get only the part before the @
+                MessageBox.Show("Formato de Usuario incorrecto, revise si @nauta.com.cu o @nautaplus está bien escrito.");
         }
 
         private void StartTimer_Click(object sender, EventArgs e)
