@@ -30,6 +30,7 @@ namespace NautaManager
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ExitButton = new System.Windows.Forms.Button();
             this.MinButton = new System.Windows.Forms.Button();
             this.UserTextBox = new System.Windows.Forms.TextBox();
@@ -48,11 +49,17 @@ namespace NautaManager
             this.MinLimit = new System.Windows.Forms.TextBox();
             this.HLimitText = new System.Windows.Forms.Label();
             this.MLimitText = new System.Windows.Forms.Label();
-            this.ActiveTimerBtn = new System.Windows.Forms.Button();
+            this.ActiveTimerBtm = new System.Windows.Forms.Button();
             this.ReduceTime = new System.Windows.Forms.Timer(this.components);
             this.ClickOnWindows = new System.Windows.Forms.Timer(this.components);
             this.ReconnectCheckBox = new System.Windows.Forms.CheckBox();
+            this.SpeedTestBtm = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.NautaBanner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ExitButton
@@ -196,7 +203,7 @@ namespace NautaManager
             this.TimerDisconnect.BackColor = System.Drawing.Color.Transparent;
             this.TimerDisconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimerDisconnect.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.TimerDisconnect.Location = new System.Drawing.Point(40, 47);
+            this.TimerDisconnect.Location = new System.Drawing.Point(40, 283);
             this.TimerDisconnect.Name = "TimerDisconnect";
             this.TimerDisconnect.Size = new System.Drawing.Size(133, 25);
             this.TimerDisconnect.TabIndex = 15;
@@ -208,7 +215,7 @@ namespace NautaManager
             this.RemTime.BackColor = System.Drawing.Color.Transparent;
             this.RemTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RemTime.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.RemTime.Location = new System.Drawing.Point(14, 167);
+            this.RemTime.Location = new System.Drawing.Point(14, 403);
             this.RemTime.Name = "RemTime";
             this.RemTime.Size = new System.Drawing.Size(16, 17);
             this.RemTime.TabIndex = 16;
@@ -217,14 +224,14 @@ namespace NautaManager
             // 
             // HourLimit
             // 
-            this.HourLimit.Location = new System.Drawing.Point(68, 85);
+            this.HourLimit.Location = new System.Drawing.Point(68, 321);
             this.HourLimit.Name = "HourLimit";
             this.HourLimit.Size = new System.Drawing.Size(32, 20);
             this.HourLimit.TabIndex = 17;
             // 
             // MinLimit
             // 
-            this.MinLimit.Location = new System.Drawing.Point(130, 85);
+            this.MinLimit.Location = new System.Drawing.Point(130, 321);
             this.MinLimit.Name = "MinLimit";
             this.MinLimit.Size = new System.Drawing.Size(32, 20);
             this.MinLimit.TabIndex = 18;
@@ -234,7 +241,7 @@ namespace NautaManager
             this.HLimitText.BackColor = System.Drawing.Color.Transparent;
             this.HLimitText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HLimitText.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.HLimitText.Location = new System.Drawing.Point(46, 84);
+            this.HLimitText.Location = new System.Drawing.Point(46, 320);
             this.HLimitText.Name = "HLimitText";
             this.HLimitText.Size = new System.Drawing.Size(19, 25);
             this.HLimitText.TabIndex = 19;
@@ -245,22 +252,22 @@ namespace NautaManager
             this.MLimitText.BackColor = System.Drawing.Color.Transparent;
             this.MLimitText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MLimitText.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MLimitText.Location = new System.Drawing.Point(106, 85);
+            this.MLimitText.Location = new System.Drawing.Point(106, 321);
             this.MLimitText.Name = "MLimitText";
             this.MLimitText.Size = new System.Drawing.Size(19, 25);
             this.MLimitText.TabIndex = 20;
             this.MLimitText.Text = "M";
             // 
-            // ActiveTimerBtn
+            // ActiveTimerBtm
             // 
-            this.ActiveTimerBtn.Enabled = false;
-            this.ActiveTimerBtn.Location = new System.Drawing.Point(68, 122);
-            this.ActiveTimerBtn.Name = "ActiveTimerBtn";
-            this.ActiveTimerBtn.Size = new System.Drawing.Size(75, 23);
-            this.ActiveTimerBtn.TabIndex = 21;
-            this.ActiveTimerBtn.Text = "Iniciar";
-            this.ActiveTimerBtn.UseVisualStyleBackColor = true;
-            this.ActiveTimerBtn.Click += new System.EventHandler(this.StartTimer_Click);
+            this.ActiveTimerBtm.Enabled = false;
+            this.ActiveTimerBtm.Location = new System.Drawing.Point(68, 358);
+            this.ActiveTimerBtm.Name = "ActiveTimerBtm";
+            this.ActiveTimerBtm.Size = new System.Drawing.Size(75, 23);
+            this.ActiveTimerBtm.TabIndex = 21;
+            this.ActiveTimerBtm.Text = "Iniciar";
+            this.ActiveTimerBtm.UseVisualStyleBackColor = true;
+            this.ActiveTimerBtm.Click += new System.EventHandler(this.StartTimer_Click);
             // 
             // ReduceTime
             // 
@@ -283,6 +290,67 @@ namespace NautaManager
             this.ReconnectCheckBox.Text = "Reconectar cada 12 horas";
             this.ReconnectCheckBox.UseVisualStyleBackColor = false;
             // 
+            // SpeedTestBtm
+            // 
+            this.SpeedTestBtm.Enabled = false;
+            this.SpeedTestBtm.Location = new System.Drawing.Point(68, 203);
+            this.SpeedTestBtm.Name = "SpeedTestBtm";
+            this.SpeedTestBtm.Size = new System.Drawing.Size(75, 23);
+            this.SpeedTestBtm.TabIndex = 27;
+            this.SpeedTestBtm.Text = "Comprobar";
+            this.SpeedTestBtm.UseVisualStyleBackColor = true;
+            this.SpeedTestBtm.Click += new System.EventHandler(this.SpeedTestBtm_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(12, 159);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(190, 25);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Calidad de conexión";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(938, 378);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "by Cardinal";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(26, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 29);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Herramientas";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::NautaManager.Properties.Resources.Github;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox1.Location = new System.Drawing.Point(932, 394);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(68, 59);
+            this.pictureBox1.TabIndex = 31;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
+            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,8 +359,13 @@ namespace NautaManager
             this.BackgroundImage = global::NautaManager.Properties.Resources.BGNauta;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1012, 465);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SpeedTestBtm);
             this.Controls.Add(this.ReconnectCheckBox);
-            this.Controls.Add(this.ActiveTimerBtn);
+            this.Controls.Add(this.ActiveTimerBtm);
             this.Controls.Add(this.MLimitText);
             this.Controls.Add(this.HLimitText);
             this.Controls.Add(this.MinLimit);
@@ -312,10 +385,12 @@ namespace NautaManager
             this.Controls.Add(this.ExitButton);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Nauta Manager";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.NautaBanner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,10 +416,15 @@ namespace NautaManager
         private System.Windows.Forms.TextBox MinLimit;
         private System.Windows.Forms.Label HLimitText;
         private System.Windows.Forms.Label MLimitText;
-        private System.Windows.Forms.Button ActiveTimerBtn;
+        private System.Windows.Forms.Button ActiveTimerBtm;
         private System.Windows.Forms.Timer ReduceTime;
         private System.Windows.Forms.Timer ClickOnWindows;
         private System.Windows.Forms.CheckBox ReconnectCheckBox;
+        private System.Windows.Forms.Button SpeedTestBtm;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

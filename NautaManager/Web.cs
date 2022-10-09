@@ -26,17 +26,22 @@ namespace NautaManager
             if (connected == true)
             {
 
-                ActiveTimerBtn.Enabled = true; //Enable the timer start button
+                ActiveTimerBtm.Enabled = true; //Enable the timer start button
+                SpeedTestBtm.Enabled = true;
 
                 if (onlineTimeElement != null) //Get current connected time
                 {
                     onlineTime = onlineTimeElement.InnerHtml;
                     ConnectedTimeText.Text = "Tiempo consumido: " + onlineTime;
-                    if (onlineTime.Split(':')[0] == "12")
+                    try
                     {
-                        Logout();
-                        Login();
-                    }
+                        if (onlineTime.Split(':')[0] == "12")
+                        {
+                            Logout();
+                            Login();
+                        }
+                    }catch (Exception ex) { }
+
                 }
                 else
                 {
@@ -71,7 +76,8 @@ namespace NautaManager
             }
             else
             {
-                ActiveTimerBtn.Enabled = false;
+                ActiveTimerBtm.Enabled = false;
+                SpeedTestBtm.Enabled = false;
             }
         }
 

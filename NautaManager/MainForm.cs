@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -217,6 +220,55 @@ namespace NautaManager
 
         private void ClickOnWindows_Tick(object sender, EventArgs e) { ActivateAndClickOkButton(); }
 
+        private void SpeedTestBtm_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Dele click a Ok y espere de 5 a 10 segundos", "Aviso");
+
+            SpeedTest speedTest = new SpeedTest();
+
+            Dictionary<string, string> result = new Dictionary<string, string>();
+
+            Process p = new Process();
+            p.StartInfo.FileName = "speedtest.exe";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p.StartInfo.CreateNoWindow = true;
+
+            p.Start();
+            string output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+
+            List<string> list_output = output.Split('\n').ToList();
+
+            result["Server"] = list_output[3].Split(':')[1].Trim();
+            result["ISP"] = list_output[4].Split(':')[1].Trim();
+            result["Latency"] = list_output[5].Split(':')[1].Trim();
+            result["Download"] = list_output[6].Split(':')[1].Replace("Download", "").Trim();
+            result["Upload"] = list_output[8].Split(':')[1].Replace("Upload", "").Trim();
+            result["PacketLoss"] = list_output[9].Split(':')[1].Trim();
+
+            speedTest.DownloadText.Text = "Descarga: " + result["Download"].Split(' ')[0] + " " + result["Download"].Split(' ')[1];
+            speedTest.UploadText.Text = "Subida: " + result["Upload"].Split(' ')[0] + " " + result["Upload"].Split(' ')[1];
+            speedTest.LatencyText.Text = "Latencia promedio: " + result["Latency"].Split(' ')[0] + " " + result["Latency"].Split(' ')[1]; ;
+
+            speedTest.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://cardinalsys.github.io");
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Cursor = Cursors.Hand;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Cursor = Cursors.Default;
+        }
     }
 
     
